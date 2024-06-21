@@ -1,9 +1,9 @@
 using System;
 public class Entry 
 {
-    public string entries { get; set; }
-    public string Date { get; set; }
-    public string Question { get; set; }
+    private string entries { get; set; }// got this from AI- { get; set;}
+    private string Date { get; set; }
+    private string Question { get; set; }
     
 
     public Entry(string date, string question, string entryText)
@@ -14,7 +14,7 @@ public class Entry
     }
     public override string ToString()
     {
-        string outputString = ""; // Declare the outputString variable
+        string outputString = ""; 
         outputString = $"{Date}#{Question}#{entries}";
         return outputString;
     }

@@ -3,7 +3,7 @@ public class Journal
 {
     private List<string> prompt;
     private Random rng;
-    public List<Entry> entries;
+    private List<Entry> entries;
 
     public Journal()
     {
@@ -26,12 +26,16 @@ public class Journal
         return (prompt[index]);
     }
     public void DisplayEntries()
-{
-    foreach (Entry entry in entries)
     {
-        Console.WriteLine(entry);
+        foreach (Entry entry in entries)
+        {
+            string[] parts = entry.ToString().Split('#');
+            string date = parts[0];
+            string question = parts[1];
+            string response = parts[2];
+            Console.WriteLine($"{date} {question} {response}");
+        }
     }
-}
     public void WriteToFile(string filename)
     {
         using (StreamWriter outputFile = new StreamWriter(filename))
@@ -44,6 +48,7 @@ public class Journal
     }
     public void LoadFromFile(string filename)
     {
+        entries.Clear();
         string[] lines = System.IO.File.ReadAllLines(filename);
         foreach (string line in lines)
         {
@@ -51,11 +56,24 @@ public class Journal
             string date = parts[0];
             string question = parts[1];
             string entry = parts[2];
-            entries.Add(new Entry(date, question, entry));
-            Entry entry1 = new Entry(date, question, entry);
+            Console.WriteLine($"{date} {question} {entry}");
             entries.Add(new Entry(date, question, entry));
             
 
+        }
+    }
+    public void SearchJournal(string searchTerm)
+    {
+        foreach (Entry entry in entries)
+        {
+            if (entry.ToString().Contains(searchTerm))
+            {
+                string[] parts = entry.ToString().Split('#');
+                string date = parts[0];
+                string question = parts[1];
+                string response = parts[2];
+                Console.WriteLine($"{date} {question} {response}");
+            }
         }
     }
 }

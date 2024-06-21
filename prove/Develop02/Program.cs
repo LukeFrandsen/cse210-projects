@@ -8,13 +8,14 @@ class Program
         string menu = "";
         Console.WriteLine("Welcome to the Journal!");
 
-        while (menu != "5")
+        while (menu != "6")
         {
             Console.WriteLine("1. Add Entry");
             Console.WriteLine("2. Display Entry");
             Console.WriteLine("3. Save to Jounral");
             Console.WriteLine("4. Load from Journal");
-            Console.WriteLine("5. Exit");
+            Console.WriteLine("5. Search Journal");
+            Console.WriteLine("6. Exit");
             menu = Console.ReadLine();
             if (menu == "1")
             {
@@ -36,6 +37,13 @@ class Program
                 journalEntry.LoadFromFile("journal.txt");
             }
             else if (menu == "5")
+            {
+                Console.WriteLine("Enter search term:");
+                string searchTerm = Console.ReadLine();
+                journalEntry.SearchJournal(searchTerm);
+            }
+
+            else if (menu == "6")
             {
                 Console.WriteLine("Goodbye!");
             }
