@@ -1,22 +1,21 @@
 using System;
 public class Entry 
 {
-    private List<string> prompt;
-    private Random rng;
+    public string entries { get; set; }
+    public string Date { get; set; }
+    public string Question { get; set; }
+    
 
-    public Entry()
+    public Entry(string date, string question, string entryText)
     {
-        rng = new Random();
-        prompt = 
-        ["Who was the most interesting person I interacted with today?", 
-        "What was the best part of my day?", 
-        "How did I see the hand of the Lord in my life today?", 
-        "What was the strongest emotion I felt today?", 
-        "If I had one thing I could do over today, what would it be?"];
+        Date = date;
+        Question = question;
+        entries = entryText; 
     }
-    public void RandomPrompt()
+    public override string ToString()
     {
-        int index = rng.Next(prompt.Count);
-        Console.WriteLine(prompt[index]);
+        string outputString = ""; // Declare the outputString variable
+        outputString = $"{Date}#{Question}#{entries}";
+        return outputString;
     }
 }

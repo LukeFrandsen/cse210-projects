@@ -4,10 +4,10 @@ class Program
 {
     static void Main(string[] args)
     {
-        Entry prompt = new Entry();
-        Journal journalEntry = new Journal("Date", "Question", "Entry");
+        Journal journalEntry = new Journal();
         string menu = "";
         Console.WriteLine("Welcome to the Journal!");
+
         while (menu != "5")
         {
             Console.WriteLine("1. Add Entry");
@@ -18,13 +18,14 @@ class Program
             menu = Console.ReadLine();
             if (menu == "1")
             {
-                prompt.RandomPrompt();
+                string question = journalEntry.RandomPrompt();
+                Console.WriteLine(question);
                 string entry = Console.ReadLine();
-                journalEntry.AddEntry(entry);
+                journalEntry.AddEntry(question, entry);
             }
             else if (menu == "2")
             {
-                Console.WriteLine(journalEntry.);
+                journalEntry.DisplayEntries();
             }
             else if (menu == "3")
             {

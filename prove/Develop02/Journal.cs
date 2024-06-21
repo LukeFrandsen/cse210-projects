@@ -1,33 +1,44 @@
 using System;   
 public class Journal
 {
-    public string Entry { get; set; }
-    public string Date { get; set; }
-    public string Question { get; set; }
-    public List<Journal> _journal;
-    public List<Journal> entries;
+    private List<string> prompt;
+    private Random rng;
+    public List<Entry> entries;
 
-    public Journal(string date, string question, string entryText)
+    public Journal()
     {
-        Date = date;
-        Question = question;
-        Entry = entryText; 
-
-        _journal = new List<Journal>();
-        entries = new List<Journal>();
+        entries = new List<Entry>();
+        rng = new Random();
+        prompt = 
+        ["Who was the most interesting person I interacted with today?", 
+        "What was the best part of my day?", 
+        "How did I see the hand of the Lord in my life today?", 
+        "What was the strongest emotion I felt today?", 
+        "If I had one thing I could do over today, what would it be?"];
     }
-    public void AddEntry(string entry)
+    public void AddEntry(string question, string entry)
     {
-        _journal.Add(new Journal(DateTime.Now.ToString("yyyy-MM-dd"), "", entry));
+        entries.Add(new Entry(DateTime.Now.ToString("yyyy-MM-dd"), question, entry));
     }
-
+    public string RandomPrompt()
+    {
+        int index = rng.Next(prompt.Count);
+        return (prompt[index]);
+    }
+    public void DisplayEntries()
+{
+    foreach (Entry entry in entries)
+    {
+        Console.WriteLine(entry);
+    }
+}
     public void WriteToFile(string filename)
     {
         using (StreamWriter outputFile = new StreamWriter(filename))
         {
-            foreach (Journal entry in _journal)
+            foreach (Entry entry in entries)
             {
-                outputFile.WriteLine($"{entry.Date}#{entry.Question}#{entry.Entry}");
+               outputFile.WriteLine(entry.ToString());
             }
         }
     }
@@ -40,7 +51,11 @@ public class Journal
             string date = parts[0];
             string question = parts[1];
             string entry = parts[2];
-            _journal.Add(new Journal(date, question, entry));
+            entries.Add(new Entry(date, question, entry));
+            Entry entry1 = new Entry(date, question, entry);
+            entries.Add(new Entry(date, question, entry));
+            
+
         }
     }
 }
