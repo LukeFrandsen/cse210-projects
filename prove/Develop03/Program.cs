@@ -5,12 +5,12 @@ class Program
     static void Main(string[] args)
     {
         
-
+        Reference myReference = new Reference();
         Scripture scripture = new Scripture();
         Verse myVerse = scripture.GetVerse();
 
         Console.Clear();
-        Console.WriteLine($"{scripture.GetReference()}");
+        Console.WriteLine($"{myReference.GetReference()}");
         myVerse.DisplayVerse();
         Console.WriteLine("Press Enter to continue or type 'quit' to exit.");
         
@@ -27,7 +27,7 @@ class Program
                 else 
                 {
                     Console.Clear();
-                    Console.WriteLine($"{scripture.GetReference()}");
+                    Console.WriteLine($"{myReference.GetReference()}");
                     myVerse.hideWords();
                     myVerse.DisplayVerse();
                     Console.WriteLine("Press Enter to continue or type 'quit' to exit.");
