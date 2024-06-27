@@ -4,6 +4,41 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Develop03 World!");
+        
+
+        Scripture scripture = new Scripture();
+        Verse myVerse = scripture.GetVerse();
+
+        Console.Clear();
+        Console.WriteLine($"{scripture.GetReference()}");
+        myVerse.DisplayVerse();
+        Console.WriteLine("Press Enter to continue or type 'quit' to exit.");
+        
+        while (myVerse.GetCount() > 0)
+        {
+            string blank = Console.ReadLine();
+            if (blank == "")
+            {
+                if (myVerse.GetCount() == 1)
+                {
+                    Console.WriteLine("You have completed the verse!");
+                    break;
+                }
+                else 
+                {
+                    Console.Clear();
+                    Console.WriteLine($"{scripture.GetReference()}");
+                    myVerse.hideWords();
+                    myVerse.DisplayVerse();
+                    Console.WriteLine("Press Enter to continue or type 'quit' to exit.");
+                }
+            }
+            else if ( blank == "quit")
+            {
+                break;
+            }
+        }
+
+        
     }
 }
