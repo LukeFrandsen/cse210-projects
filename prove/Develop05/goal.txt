@@ -1,0 +1,26 @@
+{
+  "Goals": [
+    {
+      "Type": "Simple",
+      "Name": "dsdf",
+      "Description": "dsfsd",
+      "Points": 4,
+      "IsComplete": true
+    },
+    {
+      "Type": "Simple",
+      "Name": "dsdf",
+      "Description": "dsfsd",
+      "Points": 4,
+      "IsComplete": true
+    },
+    {
+      "Type": "Eternal",
+      "Name": "sdkfsdjhf",
+      "Description": "sdfsd",
+      "Points": 4,
+      "IsComplete": true
+    }
+  ],
+  "Score": 20
+}
