@@ -91,11 +91,6 @@ public class Goals
         if (File.Exists(filename))
         {
             var jsonString = File.ReadAllText(filename);
-            // var data = JsonSerializer.Deserialize<Dictionary<string, object>>(jsonString);
-            // userScore = int.Parse(data["Score"].ToString());
-            // var goalsData = JsonSerializer.Deserialize<List<Dictionary<string, object>>>(data["Goals"].ToString());
-
-            // goals = new List<Goal>();
             using JsonDocument document = JsonDocument.Parse(jsonString);
             JsonElement root = document.RootElement;
 
@@ -122,37 +117,7 @@ public class Goals
                     goals.Add(new ChecklistGoal(goal.GetProperty("Name").GetString(), goal.GetProperty("Description").GetString(), goal.GetProperty("Points").GetInt32(), goal.GetProperty("TargetCount").GetInt32(), goal.GetProperty("BonusPoints").GetInt32(), goal.GetProperty("IsComplete").GetBoolean()));
                 }
             }
-        
-        
-        //    foreach (var kv in data)
-        //    {
-        //        Console.WriteLine(kv.Key + ":" + kv.Value);
-        //    }
-
-            //Console.WriteLine(goalsData[0]);
-            // foreach (var goalData in goalsData)
-            // {
-            //     string type = goalData["Type"].ToString();
-            //     string name = goalData["Name"].ToString();
-            //     string description = goalData["Description"].ToString();
-            //     int points = int.Parse(goalData["Points"].ToString());
-
-            //     if (type == "SimpleGoal")
-            //     {
-            //         goals.Add(new SimpleGoal(name, description, points));
-            //     }
-            //     else if (type == "ChecklistGoal")
-            //     {
-            //         int targetCount = Convert.ToInt32(goalData["TargetCount"]);
-            //         int bonusPoints = Convert.ToInt32(goalData["BonusPoints"]);
-            //         int currentCount = Convert.ToInt32(goalData["CurrentCount"]);
-
-            //         goals.Add(new ChecklistGoal(name, description, points, targetCount, bonusPoints));
-            //     }
-            
-                Console.WriteLine("Goals and score loaded.");
-        
-            //}
+            Console.WriteLine("Goals and score loaded.");
         }
         else
         {
