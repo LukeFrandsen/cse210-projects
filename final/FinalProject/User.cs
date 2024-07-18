@@ -42,7 +42,7 @@ class User
 
             foreach (var expense in budget.GetExpenses())
             {
-                totalExpenses += expense.Amount;
+                totalExpenses += expense.GetAmount();
             }
 
             return totalExpenses <= budget.GetBudgetLimit();
@@ -57,11 +57,11 @@ class User
             {
                 if (transaction is Income)
                 {
-                    totalIncome += transaction.Amount;
+                    totalIncome += transaction.GetAmount();
                 }
                 else if (transaction is Expense)
                 {
-                    totalExpenses += transaction.Amount;
+                    totalExpenses += transaction.GetAmount();
                 }
             }
 

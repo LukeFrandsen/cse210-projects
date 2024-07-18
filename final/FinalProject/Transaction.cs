@@ -1,8 +1,8 @@
 abstract class Transaction
     {
-        public decimal Amount { get; protected set; }
-        public string Description { get; protected set; }
-        public DateTime Date { get; protected set; }
+        protected decimal Amount { get; set; }
+        protected string Description { get; set; }
+        protected DateTime Date { get; set; }
 
         public Transaction(decimal amount, string description, DateTime date)
         {
@@ -10,6 +10,9 @@ abstract class Transaction
             Description = description;
             Date = date;
         }
-
+        public decimal GetAmount()
+        {
+            return Amount;
+        }
         public abstract void Display();
     }
