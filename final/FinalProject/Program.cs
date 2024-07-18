@@ -12,8 +12,14 @@ class Program
         string newUser = Console.ReadLine();
         User user = new User(newUser);
         Console.WriteLine();
-        Console.WriteLine("Please enter your salery amount: ");
+
+        Console.WriteLine("Please enter your salery amount: "); 
         decimal salary = Convert.ToDecimal(Console.ReadLine());
+        Console.WriteLine("Please enter you budget for the salery: ");
+        decimal setBudget = Convert.ToDecimal(Console.ReadLine());
+        user.CreateBudget(setBudget);
+        user.AddTransaction(new Income(salary, "Salary", DateTime.Now));
+
         string choice = "y";
         while (choice != "n")
         {
@@ -39,12 +45,7 @@ class Program
                 }
             }
         }
-            
-
-        user.AddTransaction(new Income(salary, "Salary", DateTime.Now));
-        user.AddTransaction(new Expense(200, "Groceries", DateTime.Now));
-        user.AddTransaction(new Expense(50, "Utilities", DateTime.Now));
-        
+        Console.Clear();
         user.DisplayTransactions();
         user.GenerateReport();
     }

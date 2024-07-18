@@ -8,21 +8,21 @@ class Budget
             Limit = limit;
             expenses = new List<Expense>();
         }
-
+        public decimal GetBudgetLimit()
+        {
+            return Limit;
+        }
+        public void SetBudgetLimit(decimal limit)
+        {
+            Limit = limit;
+        }
         public void AddExpense(Expense expense)
         {
             expenses.Add(expense);
         }
-
-        public bool IsWithinBudget()
+        public List<Expense> GetExpenses()
         {
-            decimal totalExpenses = 0;
-
-            foreach (var expense in expenses)
-            {
-                totalExpenses += expense.Amount;
-            }
-
-            return totalExpenses <= Limit;
+            return expenses;
         }
+        
     }
